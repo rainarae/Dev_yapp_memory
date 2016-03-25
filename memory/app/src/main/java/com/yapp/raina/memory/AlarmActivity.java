@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +19,9 @@ import android.widget.Toast;
 
 import com.yapp.raina.db.DBManager;
 import com.yapp.raina.dto.AnniversaryDto;
-import com.yapp.raina.service.AlarmService;
+import com.yapp.raina.memory.service.AlarmService;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class AlarmActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -128,21 +126,21 @@ public class AlarmActivity extends AppCompatActivity implements View.OnClickList
                 drawerLayout.openDrawer(GravityCompat.START);
         }
     }
-
-    public void mOnClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.btn_all_alarm:
-                Log.i("click:", v.getId() + "");
-                listAlarmSet = dbManager.anniversaryDao.updateAllAlarm(false);
-                for (int i = 0; i < listAlarmSet.size(); i++) {
-                    registerAlarm(listAlarmSet.get(i).getId_pk(), 04, 46, "오늘은 " + listAlarmSet.get(i).getTitle() + " 입니다. \n확인해보세요!");
-                    Log.i("register", "등록");
-                }
-
-
-        }
-    }
+//
+//    public void mOnClick(View v) {
+//
+//        switch (v.getId()) {
+//            case R.id.btn_all_alarm:
+//                Log.i("click:", v.getId() + "");
+//                listAlarmSet = dbManager.anniversaryDao.updateAllAlarm(false);
+//                for (int i = 0; i < listAlarmSet.size(); i++) {
+//                    registerAlarm(listAlarmSet.get(i).getId_pk(), 04, 46, "오늘은 " + listAlarmSet.get(i).getTitle() + " 입니다. \n확인해보세요!");
+//                    Log.i("register", "등록");
+//                }
+//
+//
+//        }
+//    }
 
     //alarm
     private void releaseAlarm(int m_pid) {
@@ -154,51 +152,51 @@ public class AlarmActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    //  p_id 는 알람 설정 취소 할때 필요 , anniversary_tb에서 ID_PK를 사용하면 될듯
-    private void registerAlarm(int P_id, int s_Hour, int s_Minute, String s_StoryName) {
-
-        long triggerTime = 0;
-//        long intervalTime = 0;
-        long intervalTime = 24 * 60 * 60 * 1000 * 365;// 24시간*365 1년단위
-
-        AlarmManager am = (AlarmManager)this.context.getSystemService(Context.ALARM_SERVICE);
-
-
-        Intent intent = new Intent(this.context, AlarmService.class);
-
-        Bundle bundle = new Bundle();
-        //  데이터 넣는거
-//        bundle.putInt("ProjectID", P_id);
-//        bundle.putString("AlertText", s_StoryName);
-//        bundle.putString("ProjectDAY", set_Days);
-//        bundle.putInt("ProjectRingSet", set_rington);
-//        bundle.putInt("ProjectRingVibe", set_RingVibe);
-        intent.putExtras(bundle);
-        PendingIntent sender = PendingIntent.getBroadcast(this.context, P_id, intent, 0);
+//    //  p_id 는 알람 설정 취소 할때 필요 , anniversary_tb에서 ID_PK를 사용하면 될듯
+//    private void registerAlarm(int P_id, int s_Hour, int s_Minute, String s_StoryName) {
 //
-        triggerTime = setTriggerTime(s_Hour, s_Minute);
-//        am.setRepeating(AlarmManager.RTC_WAKEUP, triggerTime, intervalTime, sender);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender);
-
-
-    }
-
-    private long setTriggerTime(int hour, int minutes) {
-        // current Time
-        long atime = System.currentTimeMillis();
-        // timepicker
-        Calendar curTime = Calendar.getInstance();
-        curTime.set(Calendar.HOUR_OF_DAY, 5);
-        curTime.set(Calendar.MINUTE, 1);
-        curTime.set(Calendar.SECOND, 0);
-        curTime.set(Calendar.MILLISECOND, 0);
-        long btime = curTime.getTimeInMillis();
-        long triggerTime = btime;
-        if (atime > btime)
-            triggerTime += 1000 * 60 * 60 * 24;
-
-        return triggerTime;
-    }
+//        long triggerTime = 0;
+////        long intervalTime = 0;
+//        long intervalTime = 24 * 60 * 60 * 1000 * 365;// 24시간*365 1년단위
+//
+//        AlarmManager am = (AlarmManager)this.context.getSystemService(Context.ALARM_SERVICE);
+//
+//
+//        Intent intent = new Intent(this.context, AlarmService.class);
+//
+//        Bundle bundle = new Bundle();
+//        //  데이터 넣는거
+////        bundle.putInt("ProjectID", P_id);
+////        bundle.putString("AlertText", s_StoryName);
+////        bundle.putString("ProjectDAY", set_Days);
+////        bundle.putInt("ProjectRingSet", set_rington);
+////        bundle.putInt("ProjectRingVibe", set_RingVibe);
+//        intent.putExtras(bundle);
+//        PendingIntent sender = PendingIntent.getBroadcast(this.context, P_id, intent, 0);
+////
+//        triggerTime = setTriggerTime(s_Hour, s_Minute);
+////        am.setRepeating(AlarmManager.RTC_WAKEUP, triggerTime, intervalTime, sender);
+//        am.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender);
+//
+//
+//    }
+//
+//    private long setTriggerTime(int hour, int minutes) {
+//        // current Time
+//        long atime = System.currentTimeMillis();
+//        // timepicker
+//        Calendar curTime = Calendar.getInstance();
+//        curTime.set(Calendar.HOUR_OF_DAY, 5);
+//        curTime.set(Calendar.MINUTE, 1);
+//        curTime.set(Calendar.SECOND, 0);
+//        curTime.set(Calendar.MILLISECOND, 0);
+//        long btime = curTime.getTimeInMillis();
+//        long triggerTime = btime;
+//        if (atime > btime)
+//            triggerTime += 1000 * 60 * 60 * 24;
+//
+//        return triggerTime;
+//    }
 
     //drawer menu
     private void drawerMenuInit() {

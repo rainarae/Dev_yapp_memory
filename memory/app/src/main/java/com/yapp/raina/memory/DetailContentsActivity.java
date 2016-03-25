@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.yapp.raina.db.DBManager;
 import com.yapp.raina.dto.AnniversaryDto;
 
 public class DetailContentsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,6 +44,9 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
     private TextView txt_detail_purple_title;
     private ImageButton btn_detail_alarm;
 
+    //DBmanager
+    private DBManager dbManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,9 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
     }
 
     public void init() {
+
+        dbManager = DBManager.getInstance(this);
+
         img_contents_logo = (ImageView) findViewById(R.id.img_detail_logo);
         txt_detail_title = (TextView)findViewById(R.id.txt_detail_title);
         txt_detail_purple_title = (TextView)findViewById(R.id.txt_detail_purple_title);
@@ -87,6 +94,9 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
             img_contents_logo.setImageResource(R.mipmap.detail_icon02);
         else if (dto.getCategory().equals("CHERISH"))
             img_contents_logo.setImageResource(R.mipmap.detail_icon03);
+
+
+        btn_detail_alarm.setOnClickListener(alarmListener);
     }
 
     private void toolbarInit() {
@@ -121,6 +131,13 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
     }
 
 
+    View.OnClickListener alarmListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            dbManager.anniversaryDao.updateAlarmByPid(DetailContentsActivity.this, dto);
+        }
+    };
+
     @Override
     public void onClick(View view) {
         if (view == menuHome) {
@@ -129,7 +146,7 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
             startActivity(i);
             finish();
         } else if (view == menuCategory) {
-            Intent i = new Intent(this, SettingActivity.class);
+            Intent i = new Intent(this, CategoryActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();

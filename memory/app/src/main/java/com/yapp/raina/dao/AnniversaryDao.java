@@ -1,10 +1,12 @@
 package com.yapp.raina.dao;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.yapp.raina.dto.AnniversaryDto;
+import com.yapp.raina.shared.AlarmAllocation;
 
 import java.util.ArrayList;
 
@@ -60,6 +62,24 @@ public class AnniversaryDao {
 //        db.update(TABLE_NAME, values, whereClause, whereArgs);
 
         return selectAll();
+    }
+
+    public boolean updateAlarmByPid(Context mContext, AnniversaryDto dto){
+        Log.d("before dto", dto.toString());
+        if (dto.getAlarm_st()) {
+            db.execSQL("update anniversary_tb set ALARM_ST = 'FALSE' where ID_PK = " + dto.getId_pk() + ";");
+            Log.d("AlarmSetting:", "FALSE SETTING");
+            return false;
+        }
+        else {
+            db.execSQL("update anniversary_tb set ALARM_ST = 'TRUE' where ID_PK = " + dto.getId_pk() + ";");
+            AlarmAllocation.registerAlarm(mContext, dto);
+
+            Log.d("AlarmSetting:", "TRUE SETTING");
+            return true;
+        }
+
+
     }
 
     //select lists by category

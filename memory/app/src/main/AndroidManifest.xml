@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yapp.raina.memory">
 
-    <receiver
-        android:name=".service.AlarmService"
-        android:enabled="true" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/launcher_icon"
@@ -27,6 +23,13 @@
         <activity android:name=".DetailContentsActivity" />
         <activity android:name=".AlarmActivity" />
         <activity android:name=".CategoryActivity"></activity>
+
+
+        <receiver
+            android:name=".service.AlarmService"
+            android:enabled="true" />
+
     </application>
+
 
 </manifest>

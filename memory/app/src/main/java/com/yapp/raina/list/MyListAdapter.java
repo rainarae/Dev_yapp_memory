@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,7 +61,7 @@ public class MyListAdapter extends BaseAdapter {
 
         TextView txt_date = (TextView) convertView.findViewById(R.id.txt_favorites_date);
         TextView txt_title = (TextView) convertView.findViewById(R.id.txt_favorites_title);
-        ImageButton btn_favorites = (ImageButton) convertView.findViewById(R.id.btn_favorites);
+        Button btn_favorites = (Button) convertView.findViewById(R.id.btn_favorites);
 
         txt_date.setText(myData.get(pos).getDate_ymd());
         txt_title.setText(myData.get(pos).getTitle());

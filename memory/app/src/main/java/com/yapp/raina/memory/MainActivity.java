@@ -19,7 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txt_dialong_date;
     private TextView txt_dialog_title;
     private TextView txt_dialog_contents;
-    private ImageButton btn_dialog_favorite;
+    private Button btn_dialog_favorite;
     private ImageView btn_detail;
 
     //viewpager
@@ -350,18 +350,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txt_dialog_title = (TextView) linear.findViewById(R.id.txt_abstract_title);
             txt_dialog_contents = (TextView) linear.findViewById(R.id.txt_abstract_contents);
             btn_detail = (ImageView)linear.findViewById(R.id.btn_detail_toward);
-            btn_dialog_favorite = (ImageButton) linear.findViewById(R.id.btn_dialog_favorites);
+            btn_dialog_favorite = (Button) linear.findViewById(R.id.btn_dialog_favorites);
             btn_dialog_favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (data.getBookmark_st()) {
                         dbManager.anniversaryDao.updateBookmark(data);
-                        btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
+                        btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_unclick);
                         data.setBookmark_st(false);
                     } else {
                         dbManager.anniversaryDao.updateBookmark(data);
                         data.setBookmark_st(true);
-                        btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
+                        btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_click);
                         Toast.makeText(MainActivity.this, "즐겨찾기에 추가되었습니다.", Toast.LENGTH_SHORT).show();
                     }
 
@@ -375,9 +375,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txt_dialog_contents.setText(data.getAbstract_());
 
             if (data.getBookmark_st())
-                btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
+                btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_click);
             else
-                btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
+                btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_unclick);
 
 
             final AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
@@ -526,19 +526,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txt_dialong_date = (TextView) linear.findViewById(R.id.txt_abstract_date);
                 txt_dialog_title = (TextView) linear.findViewById(R.id.txt_abstract_title);
                 txt_dialog_contents = (TextView) linear.findViewById(R.id.txt_abstract_contents);
-                btn_dialog_favorite = (ImageButton) linear.findViewById(R.id.btn_dialog_favorites);
+                btn_dialog_favorite = (Button) linear.findViewById(R.id.btn_dialog_favorites);
                 btn_detail = (ImageView) linear.findViewById(R.id.btn_detail_toward);
                 btn_dialog_favorite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (data.getBookmark_st()) {
                             dbManager.anniversaryDao.updateBookmark(data);
-                            btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
+                            btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_unclick);
                             data.setBookmark_st(false);
                         } else {
                             dbManager.anniversaryDao.updateBookmark(data);
                             data.setBookmark_st(true);
-                            btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
+                            btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_click);
                             Toast.makeText(MainActivity.this, "즐겨찾기에 추가되었습니다.", Toast.LENGTH_SHORT).show();
                         }
 
@@ -552,9 +552,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txt_dialog_contents.setText(data.getAbstract_());
 
                 if (data.getBookmark_st())
-                    btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
+                    btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_click);
                 else
-                    btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
+                    btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_unclick);
 
 
                 final AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);

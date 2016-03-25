@@ -98,7 +98,6 @@ public class FavoritesActivity extends AppCompatActivity implements View.OnClick
             Intent i = new Intent(FavoritesActivity.this, DetailContentsActivity.class);
             i.putExtra("Datadto", myList.get(pos));
             startActivity(i);
-            finish();
         }
     };
 
