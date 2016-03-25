@@ -46,7 +46,7 @@
                 android:id="@+id/btn_dialog_favorites"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/bookmark_btn_unclick" />
+                android:src="@mipmap/bookmark_btn_unclick" />
         </LinearLayout>
 
     </LinearLayout>
@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/btn_detail_toward"
-        android:src="@drawable/more_btn_unclick"
+        android:src="@mipmap/more_btn_unclick"
         />
 
 </LinearLayout>

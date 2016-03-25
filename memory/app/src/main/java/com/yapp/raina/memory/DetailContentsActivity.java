@@ -1,11 +1,11 @@
 package com.yapp.raina.memory;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yapp.raina.dto.AnniversaryDto;
 
@@ -83,11 +82,11 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
         txt_detail_reference.setText(dto.getReference());
 
         if (dto.getCategory().equals("NATIONAL"))
-            img_contents_logo.setImageResource(R.drawable.detail_icon_01);
+            img_contents_logo.setImageResource(R.mipmap.detail_icon_01);
         else if (dto.getCategory().equals("HISTORICAL"))
-            img_contents_logo.setImageResource(R.drawable.detail_icon02);
+            img_contents_logo.setImageResource(R.mipmap.detail_icon02);
         else if (dto.getCategory().equals("CHERISH"))
-            img_contents_logo.setImageResource(R.drawable.detail_icon03);
+            img_contents_logo.setImageResource(R.mipmap.detail_icon03);
     }
 
     private void toolbarInit() {
@@ -125,25 +124,21 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if (view == menuHome) {
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, MainActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuCategory) {
-            Toast.makeText(this, "Category", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, SettingActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuFavorites) {
-            Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, FavoritesActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuSetting) {
-            Toast.makeText(this, "setting", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, SettingActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);

@@ -1,7 +1,6 @@
 package com.yapp.raina.memory;
 
 import android.content.Intent;
-import android.opengl.GLES20;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -55,9 +55,7 @@ public class FavoritesActivity extends AppCompatActivity implements View.OnClick
         toolbarInit();
         drawerMenuInit();
         list.setAdapter(adapter);
-//        list.setOnItemClickListener(itemListener);
-        int[] maxTextureSize = new int[1];
-        GLES20.glGetIntegerv(GLES20.GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
+        list.setOnItemClickListener(myListListener);
     }
 
     private void toolbarInit() {
@@ -91,29 +89,37 @@ public class FavoritesActivity extends AppCompatActivity implements View.OnClick
 
     }
 
+    AdapterView.OnItemClickListener myListListener = new AdapterView.OnItemClickListener() {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Toast.makeText(FavoritesActivity.this, "Click", Toast.LENGTH_SHORT).show();
+            int pos = position;
+            Intent i = new Intent(FavoritesActivity.this, DetailContentsActivity.class);
+            i.putExtra("Datadto", myList.get(pos));
+            startActivity(i);
+            finish();
+        }
+    };
 
     @Override
     public void onClick(View view) {
         if (view == menuHome) {
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, MainActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuCategory) {
-            Toast.makeText(this, "Category", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, CategoryActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuFavorites) {
-            Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, FavoritesActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuSetting) {
-            Toast.makeText(this, "setting", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, SettingActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);

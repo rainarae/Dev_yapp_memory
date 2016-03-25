@@ -37,7 +37,7 @@
         <ImageButton
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/menu_click_btn"
+            android:src="@mipmap/menu_click_btn"
             android:onClick="mOnClick"
             android:id="@+id/btn_all_alarm" />
 

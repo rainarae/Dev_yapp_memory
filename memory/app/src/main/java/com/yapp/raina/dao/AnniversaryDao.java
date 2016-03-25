@@ -178,6 +178,8 @@ public class AnniversaryDao {
             dto.setBookmark_st(Boolean.parseBoolean(c.getString(c.getColumnIndex(KEY_BOOKMARK_ST))));
             listDto.add(dto);
         }
+
+        Log.d("month_num : ", listDto.size()+"");
         c.close();
         return listDto;
     }

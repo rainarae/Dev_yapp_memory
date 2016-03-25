@@ -12,11 +12,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/today_text"
             android:layout_width="76dp"
             android:layout_height="18dp"
             android:layout_marginLeft="16dp"
-            android:background="@drawable/today_text"
+            android:background="@mipmap/today_text"
              />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_marginTop="22dp"
             android:layout_marginBottom="21dp"
             android:layout_gravity="bottom|center_horizontal"
-            android:src="@drawable/pagemark_01"
+            android:src="@mipmap/pagemark_01"
              />
     </FrameLayout>
 
@@ -62,7 +62,7 @@
 
         <ListView
             android:id="@+id/listview_main"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="22dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"/>

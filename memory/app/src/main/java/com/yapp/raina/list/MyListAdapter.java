@@ -1,11 +1,13 @@
 package com.yapp.raina.list;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +66,22 @@ public class MyListAdapter extends BaseAdapter {
         txt_date.setText(myData.get(pos).getDate_ymd());
         txt_title.setText(myData.get(pos).getTitle());
 
+        LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.ly_favorites_list);
+
+        if (myData.get(pos).getCategory().equals("HISTORICAL")) {
+            linearLayout.setBackgroundResource(R.mipmap.list_bg_unclick_green);
+            Log.i("category", myData.get(pos).getCategory());
+        } else if (myData.get(pos).getCategory().equals("NATIONAL")) {
+
+
+            linearLayout.setBackgroundResource(R.mipmap.list_bg_unclick_red);
+            Log.i("category", myData.get(pos).getCategory());
+
+        } else if (myData.get(pos).getCategory().equals("CHERISH")) {
+            linearLayout.setBackgroundResource(R.mipmap.list_bg_unclick_ylw);
+            Log.i("category", myData.get(pos).getCategory());
+        }
+
         btn_favorites.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -73,6 +91,7 @@ public class MyListAdapter extends BaseAdapter {
                 myData.remove(pos);
                 Toast.makeText(context, "즐겨찾기가 해제되었습니다.", Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
+
             }
         });
 

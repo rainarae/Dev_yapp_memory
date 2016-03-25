@@ -5,9 +5,11 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ly_favorites_list"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:gravity="center_vertical"
+        android:descendantFocusability="blocksDescendants"
         android:orientation="horizontal">
 
         <TextView
@@ -39,7 +41,8 @@
                 android:layout_width="54dp"
                 android:layout_height="54dp"
                 android:layout_margin="18dp"
-                android:src="@drawable/star_icon_click" />
+                android:focusable="false"
+                android:src="@mipmap/star_icon_click" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

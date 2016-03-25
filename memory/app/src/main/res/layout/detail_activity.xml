@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/bar_white_under"
+        android:background="@mipmap/bar_white_under"
         android:gravity="center"
         android:text="New Text"
         android:textColor="#707274" />
@@ -67,7 +67,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="12dp"
-                android:src="@drawable/alarm_off" />
+                android:src="@mipmap/alarm_off" />
         </LinearLayout>
     </LinearLayout>
 
@@ -89,7 +89,7 @@
         android:layout_marginBottom="18dp"
         android:layout_marginTop="18dp"
         android:layout_marginLeft="28dp"
-        android:src="@drawable/bar" />
+        android:src="@mipmap/bar" />
 
 
     <TextView

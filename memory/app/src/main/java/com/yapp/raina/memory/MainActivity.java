@@ -3,7 +3,6 @@ package com.yapp.raina.memory;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.opengl.GLES20;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.GravityCompat;
@@ -38,6 +37,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DBManager dbManager;
+
 
     //drawer menu
     private LinearLayout menuHome, menuCategory, menuFavorites, menuSetting;
@@ -202,7 +202,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     txt_main_eventname = (TextView) findViewById(R.id.txt_main_firstevent);
 
 
-                    txt_main_remain.setText(SharedData.UpcomingList.get(0).getTitle() + " 까지 " + SharedData.upComingListDateCalculate.get(0) + "일 남았습니다.");
+                    if(SharedData.upComingListDateCalculate.get(0).intValue() != 0)
+                        txt_main_remain.setText(SharedData.UpcomingList.get(0).getTitle() + " 까지 " + SharedData.upComingListDateCalculate.get(0) + "일 남았습니다.");
+                    else
+                        txt_main_remain.setText("오늘은 '" + SharedData.UpcomingList.get(0).getTitle() + "' 날 입니다. ");
 
                     String[] date = SharedData.UpcomingList.get(position).getDate_ymd().split("-");
                     if (Integer.parseInt(date[1]) < 10)
@@ -212,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     txt_main_date.setText(date[2]);
                     txt_main_eventname.setText(SharedData.UpcomingList.get(position).getTitle());
 
-                    img_sliding.setImageResource(R.drawable.pagemark_01);
+                    img_sliding.setImageResource(R.mipmap.pagemark_01);
                 } else if (position == 1) {
                     txt_main_month = (TextView) findViewById(R.id.txt_main_month2);
                     txt_main_remain = (TextView) findViewById(R.id.txt_main_remain_title2);
@@ -221,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     txt_main_remain.setText(SharedData.UpcomingList.get(1).getTitle() + " 까지 " + SharedData.upComingListDateCalculate.get(1) + "일 남았습니다.");
 
+
                     String[] date = SharedData.UpcomingList.get(position).getDate_ymd().split("-");
                     if (Integer.parseInt(date[1]) < 10)
                         txt_main_month.setText(date[1].charAt(1) + "월");
@@ -229,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     txt_main_date.setText(date[2]);
                     txt_main_eventname.setText(SharedData.UpcomingList.get(position).getTitle());
 
-                    img_sliding.setImageResource(R.drawable.pagemark_02);
+                    img_sliding.setImageResource(R.mipmap.pagemark_02);
                 } else if (position == 2) {
                     txt_main_month = (TextView) findViewById(R.id.txt_main_month3);
                     txt_main_remain = (TextView) findViewById(R.id.txt_main_remain_title3);
@@ -246,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     txt_main_date.setText(date[2]);
                     txt_main_eventname.setText(SharedData.UpcomingList.get(position).getTitle());
 
-                    img_sliding.setImageResource(R.drawable.pagemark_03);
+                    img_sliding.setImageResource(R.mipmap.pagemark_03);
                 }
             }
 
@@ -307,25 +311,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == menuHome) {
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, MainActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuCategory) {
-            Toast.makeText(this, "Category", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, CategoryActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuFavorites) {
-            Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, FavoritesActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuSetting) {
-            Toast.makeText(this, "setting", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, SettingActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
@@ -356,12 +356,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onClick(View v) {
                     if (data.getBookmark_st()) {
                         dbManager.anniversaryDao.updateBookmark(data);
-                        btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_unclick);
+                        btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
                         data.setBookmark_st(false);
                     } else {
                         dbManager.anniversaryDao.updateBookmark(data);
                         data.setBookmark_st(true);
-                        btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_click);
+                        btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
                         Toast.makeText(MainActivity.this, "즐겨찾기에 추가되었습니다.", Toast.LENGTH_SHORT).show();
                     }
 
@@ -375,9 +375,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txt_dialog_contents.setText(data.getAbstract_());
 
             if (data.getBookmark_st())
-                btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_click);
+                btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
             else
-                btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_unclick);
+                btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
 
 
             final AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
@@ -388,9 +388,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent i = new Intent(MainActivity.this, DetailContentsActivity.class);
                     i.putExtra("Datadto", SharedData.monthList.get(pos));
                     startActivity(i);
+
                 }
             });
             dialog.show();
+
         }
     };
 
@@ -402,6 +404,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
+
 
     }
 
@@ -479,7 +482,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else
                     ((TextView) v.findViewById(R.id.txt_main_month1)).setText(date[1] + "월");
                 ((TextView) v.findViewById(R.id.btn_main_firstevent)).setText(date[2]);
-                ((TextView) v.findViewById(R.id.txt_main_remain_title1)).setText(SharedData.UpcomingList.get(0).getTitle() + " 까지 " + SharedData.upComingListDateCalculate.get(0) + "일 남았습니다.");
+                if (SharedData.upComingListDateCalculate.get(0).intValue() != 0)
+                    ((TextView) v.findViewById(R.id.txt_main_remain_title1)).setText(SharedData.UpcomingList.get(0).getTitle() + " 까지 " + SharedData.upComingListDateCalculate.get(0) + "일 남았습니다.");
+                else
+                    ((TextView) v.findViewById(R.id.txt_main_remain_title1)).setText("오늘은 '" + SharedData.UpcomingList.get(0).getTitle() + "' 날 입니다. ");
+
                 ((TextView) v.findViewById(R.id.txt_main_firstevent)).setText(SharedData.UpcomingList.get(0).getTitle());
                 v.findViewById(R.id.btn_main_firstevent).setOnClickListener(upcomingListener);
                 v.findViewById(R.id.iv_one);
@@ -526,12 +533,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onClick(View v) {
                         if (data.getBookmark_st()) {
                             dbManager.anniversaryDao.updateBookmark(data);
-                            btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_unclick);
+                            btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
                             data.setBookmark_st(false);
                         } else {
                             dbManager.anniversaryDao.updateBookmark(data);
                             data.setBookmark_st(true);
-                            btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_click);
+                            btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
                             Toast.makeText(MainActivity.this, "즐겨찾기에 추가되었습니다.", Toast.LENGTH_SHORT).show();
                         }
 
@@ -545,9 +552,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txt_dialog_contents.setText(data.getAbstract_());
 
                 if (data.getBookmark_st())
-                    btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_click);
+                    btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_click);
                 else
-                    btn_dialog_favorite.setImageResource(R.drawable.bookmark_btn_unclick);
+                    btn_dialog_favorite.setImageResource(R.mipmap.bookmark_btn_unclick);
 
 
                 final AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);

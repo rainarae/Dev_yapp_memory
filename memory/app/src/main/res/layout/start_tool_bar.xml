@@ -20,7 +20,7 @@
             android:layout_height="48dp"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="4dp"
-            android:background="@drawable/menu_click_btn"
+            android:background="@mipmap/menu_click_btn"
             android:clickable="true"
             android:orientation="horizontal">
 
@@ -36,10 +36,10 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-15dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="55dp"
                 android:padding="10dp"
-                android:src="@drawable/icon_02" />
+                android:src="@mipmap/icon_02" />
 
         </LinearLayout>
 

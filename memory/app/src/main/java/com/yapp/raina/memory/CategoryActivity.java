@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yapp.raina.fragment.MainTabFragment1;
 import com.yapp.raina.fragment.MainTabFragment2;
@@ -98,25 +97,21 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         if (view == menuHome) {
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, MainActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuCategory) {
-            Toast.makeText(this, "Category", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, CategoryActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuFavorites) {
-            Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, FavoritesActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuSetting) {
-            Toast.makeText(this, "setting", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, SettingActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);

@@ -66,16 +66,16 @@ public class MainAdapter extends BaseAdapter {
         LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.list_main_contents);
 
         if (myData.get(pos).getCategory().equals("HISTORICAL")) {
-            linearLayout.setBackgroundResource(R.drawable.card_unclick_bg_green);
+            linearLayout.setBackgroundResource(R.mipmap.card_unclick_bg_green);
             Log.i("category", myData.get(pos).getCategory());
         } else if (myData.get(pos).getCategory().equals("NATIONAL")) {
 
 
-            linearLayout.setBackgroundResource(R.drawable.card_unclick_bg_red);
+            linearLayout.setBackgroundResource(R.mipmap.card_unclick_bg_red);
             Log.i("category", myData.get(pos).getCategory());
 
         } else if (myData.get(pos).getCategory().equals("CHERISH")) {
-            linearLayout.setBackgroundResource(R.drawable.card_unclick_bg_ylw);
+            linearLayout.setBackgroundResource(R.mipmap.card_unclick_bg_ylw);
             Log.i("category", myData.get(pos).getCategory());
         }
 

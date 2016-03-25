@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.yapp.raina.db.DBManager;
 
@@ -80,25 +79,21 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if (view == menuHome) {
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, MainActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuCategory) {
-            Toast.makeText(this, "Category", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, CategoryActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuFavorites) {
-            Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, FavoritesActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();
         } else if (view == menuSetting) {
-            Toast.makeText(this, "setting", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, SettingActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);

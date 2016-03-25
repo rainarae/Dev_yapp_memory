@@ -10,14 +10,14 @@
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:background="@drawable/bar_white"
+        android:background="@mipmap/bar_white"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/img_main_logo1"
             android:layout_width="14dp"
             android:layout_height="24dp"
-            android:src="@drawable/flag_icon" />
+            android:src="@mipmap/flag_icon" />
 
         <TextView
             android:id="@+id/txt_main_remain_title1"
@@ -26,6 +26,7 @@
             android:layout_marginLeft="10dp"
             android:textColor="#000000"
             android:text="Medium Text"
+            android:textSize="14dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
@@ -39,7 +40,7 @@
             android:id="@+id/iv_one"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@drawable/calender_bgimg" />
+            android:background="@mipmap/calender_bgimg" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                 android:layout_width="180dp"
                 android:layout_height="176dp"
                 android:layout_marginTop="-10dp"
-                android:background="@drawable/circle_white_bg"
+                android:background="@mipmap/circle_white_bg"
                 android:gravity="center"
                 android:textSize="72dp"
                 android:text="date"
@@ -75,7 +76,7 @@
             android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:background="@drawable/circle_yellow_bg"
+            android:background="@mipmap/circle_yellow_bg"
             android:gravity="center"
             android:textSize="20dp"
             android:text="month"

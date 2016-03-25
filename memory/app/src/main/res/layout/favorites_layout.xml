@@ -11,12 +11,12 @@
         android:layout_marginTop="56dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_myfavorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/img_bookmark_text"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:src="@mipmap/title_bar"
             android:layout_gravity="center_horizontal"
-            android:text="내가 기념하는 날(즐겨찾기)"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
