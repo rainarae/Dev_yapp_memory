@@ -7,8 +7,10 @@ import android.util.Log;
 
 import com.yapp.raina.dto.AnniversaryDto;
 import com.yapp.raina.shared.AlarmAllocation;
+import com.yapp.raina.shared.SharedData;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AnniversaryDao {
 
@@ -68,12 +70,53 @@ public class AnniversaryDao {
         Log.d("before dto", dto.toString());
         if (dto.getAlarm_st()) {
             db.execSQL("update anniversary_tb set ALARM_ST = 'FALSE' where ID_PK = " + dto.getId_pk() + ";");
+            AlarmAllocation.releaseAlarm(mContext, dto);
+
+            String date[] = dto.getDate_ymd().split("-");
+            int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+
+            if (Integer.parseInt(date[1]) == month || Integer.parseInt(date[1]) == (month + 1)){
+                for (int i = 0; i < SharedData.monthList.size(); i++){
+                    if (SharedData.monthList.get(i).getId_pk() == dto.getId_pk()){
+                        SharedData.monthList.get(i).setAlarm_st(false);
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < SharedData.UpcomingList.size(); i++){
+                    if (SharedData.UpcomingList.get(i).getId_pk() == dto.getId_pk()){
+                        SharedData.UpcomingList.get(i).setAlarm_st(false);
+                        break;
+                    }
+                }
+            }
             Log.d("AlarmSetting:", "FALSE SETTING");
+
             return false;
         }
         else {
             db.execSQL("update anniversary_tb set ALARM_ST = 'TRUE' where ID_PK = " + dto.getId_pk() + ";");
             AlarmAllocation.registerAlarm(mContext, dto);
+
+            String date[] = dto.getDate_ymd().split("-");
+            int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+
+            if (Integer.parseInt(date[1]) == month || Integer.parseInt(date[1]) == (month + 1)){
+                for (int i = 0; i < SharedData.monthList.size(); i++){
+                    if (SharedData.monthList.get(i).getId_pk() == dto.getId_pk()){
+                        SharedData.monthList.get(i).setAlarm_st(true);
+                        break;
+                    }
+                }
+
+
+                for (int i = 0; i < SharedData.UpcomingList.size(); i++){
+                    if (SharedData.UpcomingList.get(i).getId_pk() == dto.getId_pk()){
+                        SharedData.UpcomingList.get(i).setAlarm_st(true);
+                        break;
+                    }
+                }
+            }
 
             Log.d("AlarmSetting:", "TRUE SETTING");
             return true;
@@ -85,7 +128,7 @@ public class AnniversaryDao {
     //select lists by category
     public ArrayList<AnniversaryDto> selectListByCategory(String category) {
         ArrayList<AnniversaryDto> list = new ArrayList<AnniversaryDto>();
-        Cursor c = db.rawQuery("SELECT * FROM anniversary_tb WHERE CATEGORY = '" + category + "';", null);
+        Cursor c = db.rawQuery("SELECT * FROM anniversary_tb WHERE CATEGORY = '" + category + "' ORDER BY strftime('%m-%d',DATE_YMD);;", null);
         while (c.moveToNext()) {
 
             AnniversaryDto dto = new AnniversaryDto();

@@ -3,44 +3,177 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="56dp"
+    android:background="#f1f1f2"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="알람설정"
-        android:id="@+id/txt"
-        android:textColor="#000000"
-        android:layout_gravity="center_horizontal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:background="#ffff00"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"
+            android:text="알람설정"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="26dp"
         android:text="전체 컨트롤"
         android:textColor="#533C97"
-        android:id="@+id/textView3" />
+        android:textSize="14dp" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="21dp"
             android:text="알람 on / off"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000"
-            android:id="@+id/textView4" />
+            android:textSize="14dp" />
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@mipmap/menu_click_btn"
-            android:onClick="mOnClick"
-            android:id="@+id/btn_all_alarm" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="right">
 
+            <Switch
+                android:id="@+id/btn_switch_all_alarm"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginRight="22dp"
+                android:text="New Switch"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="26dp"
+        android:text="부분 컨트롤"
+        android:textColor="#533C97"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="21dp"
+            android:text="공휴일"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="right">
+
+            <ImageButton
+                android:id="@+id/btn_alarm_natinal"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginRight="22dp"
+                android:src="@mipmap/checkbox_01"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="21dp"
+            android:text="우리의 기억"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="right">
+
+            <ImageButton
+                android:id="@+id/btn_alarm_historical"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginRight="22dp"
+                android:src="@mipmap/checkbox_02"/>
+
+        </LinearLayout>
+    </LinearLayout>억
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="21dp"
+            android:text="어떤이의 기억"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="right">
+
+            <ImageButton
+                android:id="@+id/btn_alarm_cherish"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginRight="22dp"
+                android:src="@mipmap/checkbox_01"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

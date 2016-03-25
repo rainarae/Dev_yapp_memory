@@ -54,7 +54,6 @@ public class AlarmActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void init() {
-        btn_all_alarm = (ImageButton) findViewById(R.id.btn_all_alarm);
         listAlarmSet = new ArrayList<AnniversaryDto>();
         context = this;
         dbManager = DBManager.getInstance(context);
@@ -102,7 +101,7 @@ public class AlarmActivity extends AppCompatActivity implements View.OnClickList
             finish();
         } else if (view == menuCategory) {
             Toast.makeText(this, "Category", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this, SettingActivity.class);
+            Intent i = new Intent(this, CategoryActivity.class);
             drawerLayout.closeDrawers();
             startActivity(i);
             finish();

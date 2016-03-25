@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,7 +42,7 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
     private TextView txt_detail_contents;
     private TextView txt_detail_reference;
     private TextView txt_detail_purple_title;
-    private ImageButton btn_detail_alarm;
+    private Button btn_detail_alarm;
 
     //DBmanager
     private DBManager dbManager;
@@ -74,7 +74,14 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
         txt_detail_abstract = (TextView)findViewById(R.id.txt_detail_abstract);
         txt_detail_contents = (TextView)findViewById(R.id.txt_detail_contents);
         txt_detail_reference = (TextView)findViewById(R.id.txt_detail_reference);
-        btn_detail_alarm = (ImageButton)findViewById(R.id.btn_detail_alarm);
+        btn_detail_alarm = (Button)findViewById(R.id.btn_detail_alarm);
+
+        if(dto.getAlarm_st()){
+            btn_detail_alarm.setBackgroundResource(R.mipmap.alarm_on);
+        }
+        else{
+            btn_detail_alarm.setBackgroundResource(R.mipmap.alarm_off);
+        }
 
         txt_detail_title.setText(dto.getTitle());
         txt_detail_purple_title.setText(dto.getTitle());
@@ -134,7 +141,18 @@ public class DetailContentsActivity extends AppCompatActivity implements View.On
     View.OnClickListener alarmListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             dbManager.anniversaryDao.updateAlarmByPid(DetailContentsActivity.this, dto);
+
+            if (dto.getAlarm_st()){
+                btn_detail_alarm.setBackgroundResource(R.mipmap.alarm_off);
+                dto.setAlarm_st(false);
+            }
+            else {
+                btn_detail_alarm.setBackgroundResource(R.mipmap.alarm_on);
+                dto.setAlarm_st(true);
+            }
+
         }
     };
 

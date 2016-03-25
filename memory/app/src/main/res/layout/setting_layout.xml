@@ -5,42 +5,72 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="56dp"
+        android:background="#ffff00"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:text="설정"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/layout_alarm_setting"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="56dp"
-        android:background="#ff0000"
+        android:layout_height="56dp"
+        android:background="#00ff00"
+        android:onClick="mOnClick"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txt_alarm_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="21dp"
+            android:textSize="14dp"
+            android:textColor="#000000"
             android:text="알람 설정"
-            android:onClick="mOnClick"/>
+             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#ff0000"
+        android:layout_height="56dp"
+        android:background="#ffff00"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="21dp"
+            android:textSize="14dp"
+            android:textColor="#000000"
             android:text="버전 정보" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#ff0000"
+        android:layout_height="56dp"
+        android:background="#00ff00"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="21dp"
+            android:textSize="14dp"
+            android:textColor="#000000"
             android:text="개발자 소개" />
     </LinearLayout>
 </LinearLayout>

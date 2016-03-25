@@ -6,8 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.yapp.raina.db.DBManager;
+import com.yapp.raina.dto.AnniversaryDto;
 import com.yapp.raina.list.ListAdapter;
 import com.yapp.raina.list.ListData;
+import com.yapp.raina.list.MainAdapter;
 import com.yapp.raina.memory.R;
 
 import java.util.ArrayList;
@@ -57,20 +60,32 @@ public class MainTabFragment3 extends android.support.v4.app.Fragment {
     ArrayList<ListData> listItem;
     ListView MyList;
     ListAdapter MyAdapter;
+
+
+    private ArrayList<AnniversaryDto> list;
+    private DBManager dbManager;
+    private MainAdapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        dbManager = DBManager.getInstance(getActivity());
+
+
         // Inflate the layout for this fragment
         View convertView = inflater.inflate(R.layout.fragment_main_tab_fragment3, container, false);
 
-        listItem = new ArrayList<ListData>();
+        list = dbManager.anniversaryDao.selectListByCategory("CHERISH");
+        adapter = new MainAdapter(getActivity(), R.layout.list_main, list);
 
-        listItem.add(new ListData("0000-00-00", "Updating....", "0-0"));
-        listItem.add(new ListData("0000-00-00", "Updating..", "0-0"));
-        MyAdapter =  new ListAdapter(getActivity(), R.layout.list_item, listItem);
+//        listItem = new ArrayList<ListData>();
+//
+//        listItem.add(new ListData("0000-00-00", "Updating....", "0-0"));
+//        listItem.add(new ListData("0000-00-00", "Updating..", "0-0"));
+//        MyAdapter =  new ListAdapter(getActivity(), R.layout.list_item, listItem);
         MyList = (ListView) convertView.findViewById(R.id.cherishlist);
-        MyList.setAdapter(MyAdapter);
+        MyList.setAdapter(adapter);
 
         return convertView;
     }

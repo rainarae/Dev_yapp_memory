@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
             pos = position;
             final AnniversaryDto data = SharedData.monthList.get(position);
             final LinearLayout linear = (LinearLayout) View.inflate(MainActivity.this, R.layout.dialog_abstract, null
@@ -354,15 +354,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btn_dialog_favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    int p_key = SharedData.monthList.get(pos).getId_pk();
+                    int key_position = 999;
+                    for (int i = 0; i < SharedData.UpcomingList.size(); i++){
+                        if(SharedData.UpcomingList.get(i).getId_pk() == p_key){
+                            key_position = i;
+                        }
+                    }
+
                     if (data.getBookmark_st()) {
                         dbManager.anniversaryDao.updateBookmark(data);
                         btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_unclick);
                         data.setBookmark_st(false);
+
+                        if (key_position != 999) {
+                            SharedData.UpcomingList.get(key_position).setBookmark_st(false);
+                        }
+
                     } else {
                         dbManager.anniversaryDao.updateBookmark(data);
                         data.setBookmark_st(true);
                         btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_click);
                         Toast.makeText(MainActivity.this, "즐겨찾기에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+
+
+                        if (key_position != 999) {
+                            SharedData.UpcomingList.get(key_position).setBookmark_st(true);
+                        }
                     }
 
 
@@ -531,15 +550,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn_dialog_favorite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        int p_key = SharedData.UpcomingList.get(position).getId_pk();
+
+                        int key_position = 999;
+                        for (int i = 0; i < SharedData.monthList.size(); i++){
+                            if(SharedData.monthList.get(i).getId_pk() == p_key){
+                                key_position = i;
+                            }
+                        }
                         if (data.getBookmark_st()) {
                             dbManager.anniversaryDao.updateBookmark(data);
                             btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_unclick);
                             data.setBookmark_st(false);
+
+                            if (key_position != 999) {
+                                SharedData.monthList.get(key_position).setBookmark_st(false);
+                                adapter.notifyDataSetChanged();
+                            }
+
                         } else {
                             dbManager.anniversaryDao.updateBookmark(data);
                             data.setBookmark_st(true);
                             btn_dialog_favorite.setBackgroundResource(R.mipmap.bookmark_btn_click);
                             Toast.makeText(MainActivity.this, "즐겨찾기에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+
+                            if (key_position != 999) {
+                                SharedData.monthList.get(key_position).setBookmark_st(true);
+                                adapter.notifyDataSetChanged();
+                            }
                         }
 
 

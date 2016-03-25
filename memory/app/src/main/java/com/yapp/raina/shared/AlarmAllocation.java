@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 
 import com.yapp.raina.dto.AnniversaryDto;
 import com.yapp.raina.memory.service.AlarmService;
@@ -25,8 +26,8 @@ public class AlarmAllocation {
         String[] date = dto.getDate_ymd().split("-");
         int month = Integer.parseInt(date[1]);
         int day = Integer.parseInt(date[2]);;
-        int hour = 2;
-        int minute = 58;
+        int hour = 3;
+        int minute = 59;
 
         String message = "메시지";
         String title = dto.getTitle();
@@ -48,16 +49,16 @@ public class AlarmAllocation {
         PendingIntent sender = PendingIntent.getBroadcast(mContext, p_id, intent, 0);
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month - 1, day, hour, minute, 0);
-        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
-//        long triggerTime = SystemClock.elapsedRealtime() + 1000*60;
-//        am.set(AlarmManager.ELAPSED_REALTIME, triggerTime, sender);
+//        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+        long triggerTime = SystemClock.elapsedRealtime() + 1000*30;
+        am.set(AlarmManager.ELAPSED_REALTIME, triggerTime, sender);
     }
 
-    private static void releaseAlarm(Context mContext, int m_pid)
+    public static void releaseAlarm(Context mContext, AnniversaryDto dto)
     {
         AlarmManager alarmManager = (AlarmManager)mContext.getSystemService(Context.ALARM_SERVICE);
-        Intent Intent = new Intent(mContext.getApplicationContext(), AlarmService.class);
-        PendingIntent pIntent = PendingIntent.getBroadcast(mContext.getApplicationContext(), m_pid, Intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent Intent = new Intent(mContext, AlarmService.class);
+        PendingIntent pIntent = PendingIntent.getBroadcast(mContext, dto.getId_pk(), Intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.cancel(pIntent);
         pIntent.cancel();
     }

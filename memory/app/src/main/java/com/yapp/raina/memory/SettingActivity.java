@@ -109,7 +109,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
     public void mOnClick(View v){
         switch (v.getId()){
-            case R.id.txt_alarm_setting:
+            case R.id.layout_alarm_setting:
                 Intent i = new Intent(SettingActivity.this, AlarmActivity.class);
                 startActivity(i);
         }
