@@ -161,7 +161,7 @@ public class AnniversaryDao {
         } else {
             mon = String.valueOf(month);
         }
-        Cursor c = db.rawQuery("SELECT * FROM anniversary_tb WHERE DATE_YMD LIKE '%-" + mon + "-%'", null);
+        Cursor c = db.rawQuery("SELECT * FROM anniversary_tb WHERE DATE_YMD LIKE '%-" + mon + "-%' ORDER BY strftime('%m-%d',DATE_YMD);'", null);
 
         while (c.moveToNext()) {
             AnniversaryDto dto = new AnniversaryDto();

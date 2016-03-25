@@ -1,6 +1,7 @@
 package com.yapp.raina.memory;
 
 import android.content.Intent;
+import android.opengl.GLES20;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -55,7 +56,8 @@ public class FavoritesActivity extends AppCompatActivity implements View.OnClick
         drawerMenuInit();
         list.setAdapter(adapter);
 //        list.setOnItemClickListener(itemListener);
-
+        int[] maxTextureSize = new int[1];
+        GLES20.glGetIntegerv(GLES20.GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
     }
 
     private void toolbarInit() {
