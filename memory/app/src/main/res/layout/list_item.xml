@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="74dp"
+        android:layout_height="48dp"
+        android:text="날짜"
+        android:textSize="12dp"
+        android:gravity="center_vertical|center_horizontal"
+    />
+
+    <TextView
+        android:id="@+id/event"
+        android:layout_width="214dp"
+        android:layout_height="48dp"
+        android:text="사건명"
+        android:textSize="12dp"
+        android:paddingLeft="16dp"
+        android:textColor="#000000"
+        android:gravity="center_vertical|left"/>
+
+    <TextView
+        android:id="@+id/lunar"
+        android:layout_width="72dp"
+        android:layout_height="48dp"
+        android:text="음력"
+        android:textColor="#000000"
+        android:textSize="9dp"
+        android:gravity="center_vertical|center_horizontal"/>
+
+</LinearLayout>
