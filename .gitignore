@@ -1,3 +1,6 @@
+# Created by https://www.gitignore.io/api/android,images
+
+### Android ###
 # Built application files
 *.apk
 *.ap_
@@ -11,6 +14,7 @@
 # Generated files
 bin/
 gen/
+out/
 
 # Gradle files
 .gradle/
@@ -30,3 +34,36 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+# Intellij
+*.iml
+
+# Keystore files
+*.jks
+
+### Android Patch ###
+gen-external-apklibs
+
+
+### Images ###
+# JPEG
+.jpg
+.jpeg
+.jpe
+.jif
+.jfif
+.jfi
+
+# JPEG 2000
+.jp2
+.j2k
+.jpf
+.jpx
+.jpm
+.mj2
+
+# JPEG XR
+.jxr
+.hdp
+.wdp
+
