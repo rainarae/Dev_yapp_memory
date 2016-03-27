@@ -51,17 +51,13 @@ public class AnniversaryDao {
     }
 
     public ArrayList<AnniversaryDto> updateAllAlarm(boolean onOff) {
-//        ContentValues values = new ContentValues();
+        //알람전체 켜기
         if (onOff)
-            db.execSQL("update anniversary_tb set ALARM_ST = 'FALSE';");
-//            values.put(KEY_ALARM_ST, false);
-        else {
             db.execSQL("update anniversary_tb set ALARM_ST = 'TRUE';");
-//            values.put(KEY_ALARM_ST, true);
+        //알람전체 끄기
+        else {
+            db.execSQL("update anniversary_tb set ALARM_ST = 'FALSE';");
         }
-//        String whereClause = KEY_CATEGORY + "=?";
-//        String[] whereArgs = new String[]{""};
-//        db.update(TABLE_NAME, values, whereClause, whereArgs);
 
         return selectAll();
     }

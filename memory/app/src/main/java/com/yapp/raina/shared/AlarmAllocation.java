@@ -50,7 +50,7 @@ public class AlarmAllocation {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month - 1, day, hour, minute, 0);
 //        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
-        long triggerTime = SystemClock.elapsedRealtime() + 1000*30;
+        long triggerTime = SystemClock.elapsedRealtime() + 1000*5;
         am.set(AlarmManager.ELAPSED_REALTIME, triggerTime, sender);
     }
 

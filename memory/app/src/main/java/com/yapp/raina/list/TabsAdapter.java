@@ -124,6 +124,7 @@ public class TabsAdapter extends FragmentPagerAdapter implements
         if (mTabChangeListener != null) {
             mTabChangeListener.onTabChanged(tabId);
         }
+
     }
 
     public Fragment getTabFragment(int position) {

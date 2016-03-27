@@ -8,19 +8,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-
-        android:background="#ffff00"
+        android:layout_height="48dp"
+        android:background="@mipmap/title_bar_favorite"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txt"
             android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="알람설정"
-            android:textColor="#000000"
+            android:textColor="#3f3f3f"
             android:textSize="20dp" />
     </LinearLayout>
 
@@ -38,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
-        android:background="#ffffff"
+        android:background="@mipmap/bar_white_under"
         android:orientation="horizontal">
 
         <TextView
@@ -48,7 +47,7 @@
             android:layout_marginTop="21dp"
             android:text="알람 on / off"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#000000"
+            android:textColor="#3f3f3f"
             android:textSize="14dp" />
 
         <LinearLayout
@@ -81,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
-        android:background="#ffffff"
+        android:background="@mipmap/bar_white_under"
         android:orientation="horizontal">
 
         <TextView
@@ -91,7 +90,7 @@
             android:layout_marginTop="21dp"
             android:text="공휴일"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#000000"
+            android:textColor="#3f3f3f"
             android:textSize="14dp" />
 
         <LinearLayout
@@ -114,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
-        android:background="#ffffff"
+        android:background="@mipmap/bar_white_under"
         android:orientation="horizontal">
 
         <TextView
@@ -124,7 +123,7 @@
             android:layout_marginTop="21dp"
             android:text="우리의 기억"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#000000"
+            android:textColor="#3f3f3f"
             android:textSize="14dp" />
 
         <LinearLayout
@@ -141,13 +140,13 @@
                 android:src="@mipmap/checkbox_02"/>
 
         </LinearLayout>
-    </LinearLayout>억
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
-        android:background="#ffffff"
+        android:background="@mipmap/bar_white_under"
         android:orientation="horizontal">
 
         <TextView
@@ -157,7 +156,7 @@
             android:layout_marginTop="21dp"
             android:text="어떤이의 기억"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#000000"
+            android:textColor="#3f3f3f"
             android:textSize="14dp" />
 
         <LinearLayout

@@ -13,4 +13,9 @@ public class SharedData {
     public static ArrayList<Integer> upComingListDateCalculate;
     public static int month = 0;
     public static String today = "";
+
+    public static boolean all_alarm = false;
+    public static boolean alarm_national = false;
+    public static boolean alarm_historical = false;
+    public static boolean alarm_cherish = false;
 }

@@ -1,10 +1,12 @@
 package com.yapp.raina.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yapp.raina.db.DBManager;
@@ -12,6 +14,7 @@ import com.yapp.raina.dto.AnniversaryDto;
 import com.yapp.raina.list.ListAdapter;
 import com.yapp.raina.list.ListData;
 import com.yapp.raina.list.MainAdapter;
+import com.yapp.raina.memory.DetailContentsActivity;
 import com.yapp.raina.memory.R;
 
 import java.util.ArrayList;
@@ -87,6 +90,15 @@ public class MainTabFragment2 extends Fragment {
 //        MyAdapter =  new ListAdapter(getActivity(), R.layout.list_item, listItem);
         MyList = (ListView) convertView.findViewById(R.id.historylist);
         MyList.setAdapter(adapter);
+
+        MyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getActivity(), DetailContentsActivity.class);
+                i.putExtra("Datadto", list.get(position));
+                startActivity(i);
+            }
+        });
 
         return convertView;
     }
